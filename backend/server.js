@@ -4,9 +4,7 @@ import schema from "./schema.js";
 import cors from "cors";
 
 const app = express();
-
 app.use(cors());
-console.log("****");
 app.use(
   "/graphql",
   graphqlHTTP({

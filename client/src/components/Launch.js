@@ -38,7 +38,6 @@ function Launch() {
     rocket: { rocket_id, rocket_name, rocket_type },
   } = data.launch;
 
-  console.log(data.launch);
   return (
     <div>
       <div>

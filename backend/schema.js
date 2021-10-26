@@ -8,6 +8,7 @@ import {
 } from "graphql";
 import axios from "axios";
 
+console.log("+++++");
 //Lunch type
 const LaunchType = new GraphQLObjectType({
   name: "Launch",
@@ -35,9 +36,10 @@ const RocketType = new GraphQLObjectType({
 const RootQuery = new GraphQLObjectType({
   name: "RootQueryType",
   fields: {
-    Launches: {
+    launches: {
       type: new GraphQLList(LaunchType),
       async resolve(parent, args) {
+        console.log("+++++");
         const response = await axios.get(
           "https://api.spacexdata.com/v3/launches"
         );
@@ -46,12 +48,14 @@ const RootQuery = new GraphQLObjectType({
         return response.data;
       },
     },
-    Launch: {
+    launch: {
       type: LaunchType,
       args: {
         flight_number: { type: GraphQLInt },
       },
       async resolve(parent, args) {
+        console.log("+++++");
+
         const { data } = await axios.get(
           `https://api.spacexdata.com/v3/launches/${args.flight_number}`
         );
